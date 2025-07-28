@@ -1,0 +1,834 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - YUGAL Digital Tools & Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #5F00FF;
+            --primary-dark: #4800CC;
+            --secondary: #0f172a;
+            --accent: #FF4136;
+            --success: #007F5F;
+            --secondary-accent: #FFD700;
+            --danger: #FF4136;
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--secondary);
+            background-color: #FAFAFA;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray-200);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav .logo {
+            font-size: 1.875rem;
+            font-weight: 800;
+            color: #5F00FF;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        nav .logo span {
+            background: linear-gradient(135deg, #5F00FF 0%, #7B33FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        nav .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        nav a {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+            font-size: 0.95rem;
+        }
+        
+        nav a:hover {
+            color: #5F00FF;
+        }
+        
+        .contact-btn {
+            background: #5F00FF;
+            color: white !important;
+            padding: 0.625rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+        }
+        
+        .contact-btn:hover {
+            background: #4800CC;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Main Content */
+        main {
+            margin-top: 76px;
+            min-height: calc(100vh - 376px);
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #5F00FF 0%, #7B33FF 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+        }
+        
+        .page-header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .page-header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .page-header p {
+            font-size: 1.375rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            animation: fadeInUp 0.6s ease-out 0.2s;
+            animation-fill-mode: both;
+        }
+        
+        /* About Content */
+        .about-content {
+            padding: 5rem 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        
+        /* Story Section */
+        .story-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 5rem;
+        }
+        
+        .story-content h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-content p {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .story-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 400px;
+            background: linear-gradient(135deg, #5F00FF 0%, #7B33FF 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 5rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            text-align: center;
+        }
+        
+        .stat-item h3 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #5F00FF;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-item p {
+            color: var(--gray-600);
+            font-size: 1.125rem;
+        }
+        
+        /* Values Section */
+        .values-section {
+            margin-bottom: 5rem;
+        }
+        
+        .values-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .values-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .values-header p {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .value-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(95, 0, 255, 0.1) 0%, rgba(255, 215, 0, 0.1) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1.5rem;
+            border: 2px solid rgba(95, 0, 255, 0.2);
+        }
+        
+        .value-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .value-card p {
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+        
+        /* Team Section */
+        .team-section {
+            background: var(--gray-100);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 5rem;
+        }
+        
+        .team-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .team-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .member-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #5F00FF 0%, #7B33FF 100%);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+        
+        .team-member h4 {
+            font-size: 1.25rem;
+            color: var(--secondary);
+            margin-bottom: 0.25rem;
+        }
+        
+        .team-member .role {
+            color: #5F00FF;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .team-member p {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #5F00FF 0%, #7B33FF 100%);
+            border-radius: 20px;
+            padding: 4rem;
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        
+        .cta-button {
+            background: white;
+            color: #5F00FF;
+            padding: 1rem 2.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .cta-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--gray-900);
+            color: var(--white);
+            padding: 3rem 2rem 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-brand p {
+            color: var(--gray-400);
+            font-size: 0.95rem;
+        }
+        
+        .footer-column h4 {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column a {
+            color: var(--gray-400);
+            text-decoration: none;
+            display: block;
+            padding: 0.25rem 0;
+            transition: color 0.2s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--white);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-800);
+            color: var(--gray-400);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Mobile Navigation */
+        .mobile-nav {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-nav {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: white;
+                border-top: 1px solid var(--gray-200);
+                padding: 0.5rem;
+                justify-content: space-around;
+                z-index: 1000;
+                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+            }
+            
+            .mobile-nav-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 0.5rem;
+                color: var(--gray-600);
+                text-decoration: none;
+                font-size: 0.75rem;
+                gap: 0.25rem;
+                transition: all 0.2s;
+            }
+            
+            .mobile-nav-item:hover,
+            .mobile-nav-item.active {
+                color: #5F00FF;
+            }
+            
+            .mobile-nav-item i {
+                font-size: 1.25rem;
+            }
+            
+            main {
+                padding-bottom: 80px;
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .story-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav .nav-links {
+                display: none;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .story-content h2 {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="https://cdn.bio.link/uploads/profile_pictures/2025-03-06/jOi36H0WMovo35xDjdVDqaaBZEk7g0xl.png" alt="YUGAL">
+                <span>YUGAL</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="index.html#services"><i class="fas fa-th-large"></i> Tools</a>
+                <a href="cart.html" class="cart-link">
+                    <i class="fas fa-shopping-cart"></i> Cart
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+                <a href="https://wa.me/923224083545" class="contact-btn"><i class="fab fa-whatsapp"></i> Contact</a>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="page-header">
+            <div class="page-header-content">
+                <h1>About YUGAL Digital</h1>
+                <p>Your Trusted Partner for Premium Digital Tools, Subscriptions & Services</p>
+            </div>
+        </section>
+        
+        <section class="about-content">
+            <!-- Our Story -->
+            <div class="story-section">
+                <div class="story-content">
+                    <h2>Our Story</h2>
+                    <p>YUGAL Digital specializes in providing premium digital tools and subscriptions at unbeatable prices. We offer top-notch solutions for all your entertainment, tools, and productivity needs.</p>
+                    <p>Our mission is simple: help users upgrade their workflow with premium tools designed to enhance efficiency and streamline tasks. From boosting productivity to effortless collaboration, we bring you powerful solutions tailored for professionals and creators.</p>
+                    <p>With over 10,000+ satisfied users transforming their workflows with our tools, we're proud to be your trusted partner. Stay ahead with the latest tools that simplify work and maximize results.</p>
+                </div>
+                <div class="story-image">
+                    🚀
+                </div>
+            </div>
+            
+            <!-- Stats -->
+            <div class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>10,000+</h3>
+                        <p>Satisfied Users</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>500+</h3>
+                        <p>Premium Tools</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>100+</h3>
+                        <p>Digital Solutions</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>99%</h3>
+                        <p>Customer Satisfaction</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Our Values -->
+            <div class="values-section">
+                <div class="values-header">
+                    <h2>Our Core Values</h2>
+                    <p>The principles that guide everything we do</p>
+                </div>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">💡</div>
+                        <h3>Innovation</h3>
+                        <p>We stay ahead of the curve, embracing new technologies and methodologies to deliver cutting-edge solutions.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🤝</div>
+                        <h3>Integrity</h3>
+                        <p>Transparency and honesty are at the heart of our client relationships. We deliver what we promise.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">⭐</div>
+                        <h3>Excellence</h3>
+                        <p>We're committed to delivering the highest quality in every project, no matter how big or small.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">👥</div>
+                        <h3>Collaboration</h3>
+                        <p>We work closely with our clients, treating their success as our own and building lasting partnerships.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">📈</div>
+                        <h3>Growth</h3>
+                        <p>We're dedicated to continuous improvement, both for ourselves and for our clients' businesses.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">💰</div>
+                        <h3>Value</h3>
+                        <p>We provide exceptional service at competitive prices, ensuring the best return on your investment.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Team -->
+            <div class="team-section">
+                <div class="team-header">
+                    <h2>Meet Our Team</h2>
+                </div>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-avatar">👨‍💼</div>
+                        <h4>Yugal</h4>
+                        <p class="role">CEO & Founder</p>
+                        <p>Visionary leader driving innovation in digital tools and subscriptions</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">👩‍💻</div>
+                        <h4>Sarah Williams</h4>
+                        <p class="role">Lead Developer</p>
+                        <p>Full-stack expert specializing in modern web technologies</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">👨‍🎨</div>
+                        <h4>Michael Chen</h4>
+                        <p class="role">Creative Director</p>
+                        <p>Award-winning designer with a passion for user experience</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">👩‍💼</div>
+                        <h4>Fatima Ali</h4>
+                        <p class="role">Project Manager</p>
+                        <p>Ensuring smooth delivery and client satisfaction</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA -->
+            <div class="cta-section">
+                <h2>Ready to Upgrade Your Workflow?</h2>
+                <p>Experience the power of innovation with our premium digital tools</p>
+                <div class="cta-buttons">
+                    <a href="index.html#services" class="cta-button">View Services</a>
+                    <a href="https://wa.me/923224083545" class="cta-button secondary">Get in Touch</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <a href="index.html" class="mobile-nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="index.html#services" class="mobile-nav-item">
+            <i class="fas fa-th-large"></i>
+            <span>Tools</span>
+        </a>
+        <a href="cart.html" class="mobile-nav-item">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Cart</span>
+            <span class="cart-count" id="mobileCartCount">0</span>
+        </a>
+        <a href="https://wa.me/923224083545" class="mobile-nav-item">
+            <i class="fab fa-whatsapp"></i>
+            <span>Contact</span>
+        </a>
+    </nav>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>YUGAL Digital</h3>
+                <p>Your one-stop destination for premium digital tools and subscriptions. Stay ahead with the latest tools that simplify work and maximize results.</p>
+                <p style="margin-top: 1rem; color: #FFD700;">A Project by YUGAL Company</p>
+                <p style="margin-top: 0.5rem; color: var(--gray-400); font-size: 0.875rem;">CEO: Yugal</p>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#services">Subscriptions</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="payment-methods.html">Payment Methods</a></li>
+                    <li><a href="returns-refunds.html">Returns & Refunds</a></li>
+                    <li><a href="copyright.html">Copyright Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Popular Services</h4>
+                <ul>
+                    <li><a href="index.html#services">ChatGPT Plus</a></li>
+                    <li><a href="index.html#services">Netflix Premium</a></li>
+                    <li><a href="index.html#services">Spotify Premium</a></li>
+                    <li><a href="index.html#services">Canva Pro</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="https://wa.me/923224083545">WhatsApp: +92 322 4083545</a></li>
+                    <li><a href="mailto:support@Yugal.com">Email: support@Yugal.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Yugal Digital Shop by Yugal Company. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Update cart count
+        function updateCartCount() {
+            const cart = localStorage.getItem('cart');
+            const cartItems = cart ? JSON.parse(cart) : [];
+            const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+            
+            const desktopCartCount = document.getElementById('cartCount');
+            const mobileCartCount = document.getElementById('mobileCartCount');
+            
+            if (desktopCartCount) desktopCartCount.textContent = cartCount;
+            if (mobileCartCount) mobileCartCount.textContent = cartCount;
+        }
+
+        // Update cart count on page load
+        updateCartCount();
+    </script>
+</body>
+</html>
+
